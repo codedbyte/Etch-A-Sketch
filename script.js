@@ -1,4 +1,10 @@
 const container = document.querySelector('.container');
+const generateGridBtn = document.getElementById('generate-grid');
+
+generateGridBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    getUserEntry();
+})
 
 function createGrid(rows, cols) {
     for (let i=1; i<=rows; i++){
@@ -26,5 +32,11 @@ function createGrid(rows, cols) {
 
 createGrid(16,16);
 
+function getUserEntry() {
+    const rows = parseInt(prompt('Enter Number of rows: '));
+    const cols = parseInt(prompt("Enter Number of columns: "));
+    container.innerHTML = '';
+    createGrid(rows, cols);
+}
 
 
