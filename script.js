@@ -6,6 +6,8 @@ generateGridBtn.addEventListener("click", (e) => {
     getUserEntry();
 })
 
+
+
 function createGrid(rows, cols) {
     for (let i=1; i<=rows; i++){
         const grid = document.createElement('div');
@@ -17,13 +19,24 @@ function createGrid(rows, cols) {
             innerGrid.className = 'container-innergrid';
             grid.appendChild(innerGrid)
 
+            function getRandomRgbColor () {
+                let r = Math.floor(Math.random() * 256);
+                let g = Math.floor(Math.random() * 256);
+                let b = Math.floor(Math.random() * 256);
+                let opacity = 100;
+                opacity -= 10;
+                return `rgb(${r}, ${g}, ${b}, ${opacity}%)`;
+            }
+
+            let randomColor = getRandomRgbColor();
+
             innerGrid.addEventListener("mouseenter", 
                 () => {
-            innerGrid.classList.toggle('hover');
+            innerGrid.style.backgroundColor = randomColor;
         });
 
             innerGrid.addEventListener("mouseleave", () => {
-                innerGrid.classList.toggle('hover');
+                innerGrid.style.backgroundColor = '#333';
             });
             
         }
